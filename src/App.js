@@ -15,7 +15,7 @@ const App = () => {
     const fetchSwatches = async () => {
       setLoading(true);
       const res = colors;
-      setSwatches(res.data);
+      setSwatches(res);
       setLoading(false);
     };
     fetchSwatches();
@@ -24,7 +24,7 @@ const App = () => {
   //Get current Posts
   const indexOfLastSwatch = currentPage * swatchesPerPage;
   const indexOfFirstSwatch = indexOfLastSwatch - swatchesPerPage;
-  const currentPosts = colors.slice(indexOfFirstSwatch, indexOfLastSwatch);
+  const currentSwatch = swatches.slice(indexOfFirstSwatch, indexOfLastSwatch);
 
   // Change Page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -37,7 +37,7 @@ const App = () => {
       <h3 className="text-primary mb-3 d-flex justify-content-center">
         Applicant Interview Challenge
       </h3>
-      <Swatches colors={currentPosts} loading={loading} />
+      <Swatches colors={currentSwatch} loading={loading} />
       <Pagination
         postsPerPage={swatchesPerPage}
         totalPosts={colors.length}
