@@ -1,4 +1,4 @@
-import React, { useState, useEffect, setActive } from "react";
+import React, { useState, useEffect } from "react";
 import Swatches from "./components/Swatches";
 import Random from "./components/Random";
 import Pagination from "./components/Pagination";
@@ -11,12 +11,7 @@ const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [swatchesPerPage] = useState(20);
 
-  const handleFocusIn = (e) => {
-    setActive(document.activeElement);
-  };
-
   useEffect(() => {
-    document.addEventListener("focusin", handleFocusIn);
     const fetchSwatches = async () => {
       setLoading(true);
       const res = colors;
